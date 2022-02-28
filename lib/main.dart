@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
         return OrientationBuilder(builder: (context, orientation) {
           SizeConfig().init(constraints, orientation);
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'Amaze-ing',
             theme: ThemeData(
               primarySwatch: Colors.blue,

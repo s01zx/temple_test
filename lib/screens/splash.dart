@@ -23,112 +23,119 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Image.asset(
-            "assets/images/splash.png",
-            height: MediaQuery.of(context).size.height,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-          Container(
-            margin: EdgeInsets.only(
-              left: calculateSize(45),
-              right: calculateSize(45),
+      body: Container(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            //Spacer(),
+            Container(
+              margin: EdgeInsets.only(left: calculateSize(45)),
+              child: Image.asset("assets/images/speakericon.png"),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Image.asset("assets/images/speakericon.png"),
-                SizedBox(
-                  height: calculateSize(10),
-                ),
-                RichText(
-                  text: TextSpan(
-                      text: "Amaze",
-                      style: TextStyle(
-                        color: Color(0xffE6007E),
-                        fontWeight: FontWeight.w600,
-                        fontSize: calculateSize(26),
-                      ),
-                      children: [
-                        TextSpan(
-                          text: "-ing",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: calculateSize(26),
-                          ),
-                        ),
-                      ]),
-                ),
-                appText(
-                    "Amaze   We help bridge the gap between celebrities and their fans.",
-                    15,
-                    weight: FontWeight.w400,
-                    bottommargin: 15.0,
-                    topmargin: 10.0,
-                    color: Colors.white,
-                    align: TextAlign.start),
-                Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(
-                    bottom: calculateSize(15),
-                  ),
-                  width: double.infinity,
-                  height: calculateSize(48),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white, width: 2),
-                    borderRadius: BorderRadius.circular(calculateSize(10)),
-                  ),
-                  child: Text(
-                    "Login",
+            SizedBox(
+              height: calculateSize(10),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: calculateSize(45)),
+              child: RichText(
+                text: TextSpan(
+                    text: "Amaze",
                     style: TextStyle(
-                        fontSize: calculateSize(20), color: Colors.white),
+                      color: Color(0xffE6007E),
+                      fontWeight: FontWeight.w600,
+                      fontSize: calculateSize(26),
+                    ),
+                    children: [
+                      TextSpan(
+                        text: "-ing",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                          fontSize: calculateSize(26),
+                        ),
+                      ),
+                    ]),
+              ),
+            ),
+            appText(
+                "Amaze   We help bridge the gap between celebrities and their fans.",
+                15,
+                weight: FontWeight.w400,
+                leftmargin: 45.0,
+                rightmargin: 45.0,
+                bottommargin: 15.0,
+                topmargin: 10.0,
+                color: Colors.white,
+                align: TextAlign.start),
+            Container(
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(
+                  bottom: calculateSize(15),
+                  left: calculateSize(45),
+                  right: calculateSize(45)),
+              width: double.infinity,
+              height: calculateSize(48),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 2),
+                borderRadius: BorderRadius.circular(calculateSize(10)),
+              ),
+              child: Text(
+                "Login",
+                style:
+                    TextStyle(fontSize: calculateSize(20), color: Colors.white),
+              ),
+            ),
+            GestureDetector(
+              onTap: () =>
+                  Navigator.of(context).pushNamed(SignUpScreen.routeName),
+              child: Container(
+                margin: EdgeInsets.only(
+                    bottom: calculateSize(39),
+                    left: calculateSize(45),
+                    right: calculateSize(45)),
+                width: double.infinity,
+                height: calculateSize(48),
+                decoration: BoxDecoration(
+                  //color: Colors.green,
+                  borderRadius: BorderRadius.circular(calculateSize(10)),
+                  gradient: const LinearGradient(
+                    colors: [
+                      Color(0xffE6007E),
+                      Color(0xffB800E6),
+                    ],
                   ),
                 ),
-                GestureDetector(
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(SignUpScreen.routeName),
+                child: Padding(
+                  padding: const EdgeInsets.all(1.5),
                   child: Container(
-                    margin: EdgeInsets.only(bottom: calculateSize(39)),
-                    width: double.infinity,
-                    height: calculateSize(48),
+                    alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      //color: Colors.green,
-                      borderRadius: BorderRadius.circular(calculateSize(10)),
-                      gradient: const LinearGradient(
-                        colors: [
-                          Color(0xffE6007E),
-                          Color(0xffB800E6),
-                        ],
+                      color: Color(0xff140432),
+                      borderRadius: BorderRadius.circular(
+                        calculateSize(10),
                       ),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(1.5),
-                      child: Container(
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: Color(0xff140432),
-                          borderRadius: BorderRadius.circular(
-                            calculateSize(10),
-                          ),
-                        ),
-                        child: Text(
-                          "Create Account",
-                          style: TextStyle(
-                              fontSize: calculateSize(20),
-                              foreground: Paint()..shader = linearGradient),
-                        ),
-                      ),
+                    child: Text(
+                      "Create Account",
+                      style: TextStyle(
+                          fontSize: calculateSize(20),
+                          foreground: Paint()..shader = linearGradient),
                     ),
                   ),
-                )
-              ],
-            ),
+                ),
+              ),
+            )
+          ],
+        ),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: AssetImage("assets/images/splash.png"),
           ),
-        ],
+        ),
       ),
     );
   }
